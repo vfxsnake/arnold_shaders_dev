@@ -1,0 +1,71 @@
+options
+{
+ AA_samples 9
+ camera "camera"
+ GI_diffuse_depth 1
+ GI_specular_depth 1
+ GI_diffuse_samples 3
+}
+
+
+gaussian_filter
+{
+ name /out/arnold1:gaussian_filter
+}
+
+persp_camera
+{
+ name camera
+ position 0 30 30
+ look_at 0 5 0
+
+}
+
+sphere
+{
+ name pSphereShape1
+ center 0 5 0
+ radius 5
+ shader "ballShader"
+}
+
+sphere
+{
+ name pSphereShape2
+ center -10 5 0
+ radius 5
+ shader "groundShader"
+}
+
+plane
+{
+ name myplane
+ normal 0 1 0
+ point 0 0 0
+ shader "groundShader"
+} 
+
+simple
+{
+ name ballShader
+ color 0.5 0.1 0.1
+} 
+
+standard_surface
+{
+ name groundShader
+} 
+
+skydome_light
+{
+ name sky
+ intensity 0.001
+}
+
+disk_light
+{
+  exposure 12
+  position -10 30 8
+  rotation -90 0 0 
+}
+
